@@ -1,39 +1,48 @@
-import {
-  isRouteErrorResponse,
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "react-router";
+import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
+import { Navbar } from './components/Navbar';
+import { Sidebar } from './components/Sidebar';
 
-import type { Route } from "./+types/root";
-import "./app.css";
+import type { ReactNode } from 'react';
+import './app.css';
 
-export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+export const links = () => [
+  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+  { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
   {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
+    rel: 'stylesheet',
+    href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap',
   },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
-  },
+  { rel: 'icon', href: '/favicon.ico' },
 ];
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export const meta = () => [
+  { title: 'Sales Dashboard — Global Insights' },
+  { name: 'description', content: 'Interactive sales analytics dashboard for global marketplaces.' },
+  { name: 'keywords', content: 'sales,dashboard,analytics,ecommerce,marketplaces,react,router' },
+  { property: 'og:title', content: 'Sales Dashboard' },
+  { property: 'og:description', content: 'Global sales analytics and insights.' },
+  { property: 'og:type', content: 'website' },
+  { property: 'og:image', content: '/og-cover.png' },
+  { name: 'theme-color', content: '#020617' }, // matches your gradient dark palette
+];
+
+export function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body>
-        {children}
+
+      <body className="gradient_bg text-white min-h-screen flex">
+        <Sidebar />
+
+        <div className="flex-1 flex flex-col min-h-screen">
+          <Navbar />
+
+          <main className="flex-1 p-6 overflow-y-auto">{children}</main>
+        </div>
+
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -45,31 +54,41 @@ export default function App() {
   return <Outlet />;
 }
 
-export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  let message = "Oops!";
-  let details = "An unexpected error occurred.";
+export function ErrorBoundary({ error }: { error: unknown }) {
+  let title = 'Unexpected Error';
+  let message = 'Something went wrong.';
   let stack: string | undefined;
 
   if (isRouteErrorResponse(error)) {
-    message = error.status === 404 ? "404" : "Error";
-    details =
-      error.status === 404
-        ? "The requested page could not be found."
-        : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
-    details = error.message;
+    title = error.status === 404 ? '404 — Not Found' : `Error ${error.status}`;
+    message = error.statusText || 'Unexpected error occurred.';
+  } else if (import.meta.env.DEV && error instanceof Error) {
+    message = error.message;
     stack = error.stack;
   }
 
   return (
-    <main className="pt-16 p-4 container mx-auto">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full p-4 overflow-x-auto">
-          <code>{stack}</code>
-        </pre>
-      )}
-    </main>
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body className="gradient_bg text-white min-h-screen flex flex-col p-10">
+        <h1 className="text-4xl font-bold gradient_text_accent mb-4">{title}</h1>
+        <p className="mb-4">{message}</p>
+
+        {stack && (
+          <pre className="p-4 bg-white/10 rounded-lg overflow-x-auto">
+            <code>{stack}</code>
+          </pre>
+        )}
+
+        <a href="/" className="mt-6 inline-block px-6 py-3 bg-cyan-600 rounded hover:bg-cyan-500 transition text-white font-medium">
+          Go Back Home
+        </a>
+
+        <Scripts />
+      </body>
+    </html>
   );
 }

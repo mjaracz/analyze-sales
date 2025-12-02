@@ -1,15 +1,43 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base font and color-scheme handling */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    color-scheme: dark;
+  }
 }
 
-html,
-body {
-  @apply bg-white dark:bg-gray-950;
+html, body {
+  @apply text-slate-100 bg-gradient-to-r from-neutral-950 to-sky-950 min-h-screen font-sans;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+@layer components {
+  .gradient_bg {
+    @apply bg-gradient-to-r from-neutral-950 to-sky-950;
+  }
+
+  .gradient_text_accent {
+    @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+  }
+
+  .accent_ring {
+    @apply ring-2 ring-offset-2 ring-blue-600/60;
+  }
+
+  .container {
+    @apply max-w-6xl mx-auto px-6 py-10;
+  }
+
+  .card {
+    @apply bg-white/5 border border-white/10 backdrop-blur-sm rounded-xl p-5 shadow-lg;
+  }
+
+  .section-title {
+    /* apply utilities directly (do not @apply a custom class) */
+    @apply text-xl font-semibold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent mb-4;
   }
 }
