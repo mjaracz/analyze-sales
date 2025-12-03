@@ -24,12 +24,19 @@ export default function OrderDetails() {
   if (isPending) return <SpinnerLoader />;
 
   const stateRow = (location && location.state) || undefined;
-  const row = stateRow ?? (Array.isArray(data) ? data.find((r) => Number(r.order_status_id) === numericId) : undefined);
+
+  const row =
+    stateRow ??
+    (Array.isArray(data)
+      ? data.find((r) => Number(r.order_status_id) === numericId)
+      : undefined);
 
   if (!row) {
     return (
       <div className="gradient_bg p-8 text-white">
-        <h1 className="text-3xl font-bold gradient_text_accent">Order Not Found</h1>
+        <h1 className="text-3xl font-bold gradient_text_accent">
+          Order Not Found
+        </h1>
         <p className="text-slate-300 mt-2">No data exists for this order ID.</p>
       </div>
     );
@@ -57,7 +64,10 @@ export default function OrderDetails() {
         </p>
       </div>
       <div>
-        <Link to="/orders" className="text-ms font-semibold gradient_text_accent hover:underline">
+        <Link
+          to="/orders"
+          className="text-ms font-semibold gradient_text_accent hover:underline"
+        >
           ← Back to orders
         </Link>
       </div>

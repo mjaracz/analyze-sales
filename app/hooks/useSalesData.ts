@@ -21,7 +21,9 @@ export function useSalesData(rows: SalesData, isPending: boolean) {
     byDateMap[r.date].sum += r.sum_sales;
   });
 
-  const byDate = Object.values(byDateMap).sort((a, b) => a.date.localeCompare(b.date));
+  const byDate = Object.values(byDateMap).sort((a, b) =>
+    a.date.localeCompare(b.date)
+  );
 
   const byChannelMap: Record<string, { name: string; sum: number }> = {};
   rows.forEach((r) => {
@@ -32,7 +34,9 @@ export function useSalesData(rows: SalesData, isPending: boolean) {
 
   const byChannel = Object.values(byChannelMap);
 
-  const latestRows = [...rows].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 50);
+  const latestRows = [...rows]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 50);
 
   return {
     isPending: false,

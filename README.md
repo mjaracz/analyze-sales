@@ -1,20 +1,176 @@
-# Welcome to React Router!
+# Let's analyze the sales data!
 
-A modern, production-ready template for building full-stack React applications using React Router.
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+A modern, production-ready application helping user analizing data sales.
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
+- 🚀 <b>Sales Dashboard:</b> Visualizes revenue trends, order volume, and sales performance across multiple marketplaces.
+- ⚡️ <b>Orders Management:</b> Displays a complete list of orders with essential business metrics such as date, channel, status, revenue, and item count.
+- 📦 <b>Order Details View:</b> Allows users to inspect a single order with precise transactional information.
+- 🔄 <b>Multi-Channel Support:</b> Handles data from various sales channels (Allegro, Shopify, Shoper, PrestaShop, eBay, etc.).
+- 🔒 <b>High-Volume Data Handling:</b> Efficiently loads and displays large datasets representing real-world sales operations.
+- 🎉 <b>Interactive Charts:</b> Provides graphical insights into performance using clear, data-driven visualizations.
 - 📖 [React Router docs](https://reactrouter.com/)
 
-## Getting Started
+## 🏗️ Architectural Structure
+
+This project follows a modular, layered, and minimalistic architecture, aligned with the expectations of the recruitment task.
+It is designed using React Router v7 (Framework Mode), which provides:
+
+- File-based routing
+- Loader-based data-fetching
+- Automatic data hydration
+- Built-in SSR capability
+- Separation of concerns between routing, data, and rendering
+
+## Key Architectural Principles
+
+#### 1. Modular UI Components
+
+Reusable UI and chart components are grouped inside:
+
+```bash
+app/components/
+```
+
+Each component is small, focused, and framework-agnostic.
+
+#### 2. Route Modules
+
+Screens are implemented using React Router’s route module conventions, inside:
+
+```bash
+app/routes/
+```
+
+Each file corresponds to a route:
+
+- `_index.tsx` — dashboard (home)
+- `orders.tsx` — orders list
+- `orders.$id.tsx` — order details
+
+Route modules include:
+
+- UI
+- Loaders
+- Optional meta definitions
+- Error boundaries
+
+#### 3. Data Layer
+
+Static dataset sales.json is stored under:
+
+```bash
+app/data/
+```
+
+A dedicated loader provides structured access to the dataset and resolves it into a consistent interface.
+
+A custom hook (useSalesData) wraps loader results and exposes:
+
+- `data`
+- `isPending`
+- `error`
+
+#### 4. Global Layout
+
+The application layout (header, sidebar, base HTML structure) is defined in:
+
+```bash
+app/root.tsx
+```
+
+This includes:
+
+- `<html>` scaffold
+- Global styles
+- Global navigation
+- ErrorBoundary
+
+#### 5. TailwindCSS with Custom Utilities
+
+Global utilities and gradient themes are defined in:
+
+```bash
+app/app.css
+```
+
+Custom utilities:
+
+- `.gradient_bg`
+- `.gradient_text_accent`
+- `.accent_ring`
+
+Tailwind automatically bundles only used classes, keeping CSS small.
+
+## 🧰 Technology Stack
+
+#### React 19
+
+Modern react runtime with improved transitions and rendering stability.
+
+#### React Router v7 (Framework Mode)
+
+Chosen due to acceptance criteria.
+Provides:
+
+- SSR-ready routing
+- Data loaders / actions
+- Type-safe routing modules
+- Seamless client ↔ server hydration
+
+#### Vite
+
+High-performance tool for:
+
+- local dev server
+- bundling
+- optimizing client assets
+
+#### Recharts
+
+Data visualization library used for:
+
+- line charts
+- bar charts
+- responsive sales dashboards
+
+#### TailwindCSS
+
+Utility-first styling with:
+
+- custom gradients
+- responsive utilities
+- low CSS overhead
+
+#### TypeScript
+
+Static typing across the entire project for additional correctness and maintainability.
+
+## 📁 Project Folder Structure
+
+```bash
+app/
+ ├─ root.tsx                # Global layout, error boundary, HTML scaffold
+ ├─ routes/
+ │    ├─ _index.tsx         # Dashboard screen
+ │    ├─ orders.tsx         # Orders list
+ │    └─ orders.$id.tsx     # Order details by ID
+ ├─ data/
+ │    └─ sales.json         # Static dataset used by loaders
+ ├─ components/
+ │    ├─ charts/            # Recharts-based components merged here
+ │    ├─ ui/                # Shared UI
+ │    └─ SpinnerLoader.tsx
+ ├─ hooks/
+ │    └─ useSalesData.ts
+ ├─ styles/
+ │    └─ app.css            # Global Tailwind styles + utilities
+ └─ utils/
+
+```
+
+## Getting Started, running the application
 
 ### Installation
 
@@ -34,53 +190,91 @@ npm run dev
 
 Your application will be available at `http://localhost:5173`.
 
+Features:
+
+- Hot module reload
+- File-based routing
+- Loader execution
+- SSR + client hydration
+- Fully interactive environment
+
 ## Building for Production
 
-Create a production build:
+#### Create a production build:
 
 ```bash
 npm run build
 ```
 
-## Deployment
+This triggers <b>React Router Framework’s two-phase build:</b>
 
-### Docker Deployment
+1. <b>Client build</b> → optimized browser bundle (`build/client/`)
+2. <b>Server build</b> → SSR module (`build/server/`)
 
-To build and run using Docker:
+Output:
 
 ```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
+build/
+ ├─ client/   → JS, CSS, assets
+ └─ server/   → server entry (index.js)
 
 ```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
+
+#### Start a production build:
+
+```bash
+npm run start
 ```
+
+This uses:
+
+```bash
+react-router-serve ./build/server/index.js
+```
+
+to start an SSR server that renders the built application. </br>
+This is the official way to preview a framework-mode build.
+
+## Type Checking
+
+```bash
+npm run typecheck
+```
+
+Runs:
+
+```bash
+react-router typegen && tsc
+```
+
+- Ensures React Router route types match your file structure
+- Ensures there are zero TypeScript type errors
+
+This is extremely useful for catching regressions early.
 
 ## Styling
 
 This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
+
+## 🌐 Opening the Workspace (Review Instructions)
+
+The reviewer can use <b>any of the workflows below:</b>
+
+### ✔ Recommended (Full SSR Mode)
+
+```bash
+npm install
+npm run build
+npm run start
+```
+
+## 🎉 Final Notes
+
+- Architecture is minimalistic, modular, and fully aligned with the acceptance criteria.
+- The project uses the required React Router v7 Framework Mode.
+- All screens and components are written in English for global application context.
+- Installation and execution require no code modifications.
+- The README provides clear instructions for the reviewer.
 
 ---
 

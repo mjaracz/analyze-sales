@@ -1,4 +1,11 @@
-import { isRouteErrorResponse, Links, Meta, Outlet, Scripts, ScrollRestoration } from 'react-router';
+import {
+  isRouteErrorResponse,
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+} from 'react-router';
 import { Navbar } from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
 
@@ -7,7 +14,11 @@ import './app.css';
 
 export const links = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-  { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' },
+  {
+    rel: 'preconnect',
+    href: 'https://fonts.gstatic.com',
+    crossOrigin: 'anonymous',
+  },
   {
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap',
@@ -17,10 +28,19 @@ export const links = () => [
 
 export const meta = () => [
   { title: 'Sales Dashboard — Global Insights' },
-  { name: 'description', content: 'Interactive sales analytics dashboard for global marketplaces.' },
-  { name: 'keywords', content: 'sales,dashboard,analytics,ecommerce,marketplaces,react,router' },
+  {
+    name: 'description',
+    content: 'Interactive sales analytics dashboard for global marketplaces.',
+  },
+  {
+    name: 'keywords',
+    content: 'sales,dashboard,analytics,ecommerce,marketplaces,react,router',
+  },
   { property: 'og:title', content: 'Sales Dashboard' },
-  { property: 'og:description', content: 'Global sales analytics and insights.' },
+  {
+    property: 'og:description',
+    content: 'Global sales analytics and insights.',
+  },
   { property: 'og:type', content: 'website' },
   { property: 'og:image', content: '/og-cover.png' },
   { name: 'theme-color', content: '#020617' }, // matches your gradient dark palette
@@ -74,7 +94,9 @@ export function ErrorBoundary({ error }: { error: unknown }) {
         <Links />
       </head>
       <body className="gradient_bg text-white min-h-screen flex flex-col p-10">
-        <h1 className="text-4xl font-bold gradient_text_accent mb-4">{title}</h1>
+        <h1 className="text-4xl font-bold gradient_text_accent mb-4">
+          {title}
+        </h1>
         <p className="mb-4">{message}</p>
 
         {stack && (
@@ -83,7 +105,10 @@ export function ErrorBoundary({ error }: { error: unknown }) {
           </pre>
         )}
 
-        <a href="/" className="mt-6 inline-block px-6 py-3 bg-cyan-600 rounded hover:bg-cyan-500 transition text-white font-medium">
+        <a
+          href="/"
+          className="mt-6 inline-block px-6 py-3 bg-cyan-600 rounded hover:bg-cyan-500 transition text-white font-medium"
+        >
           Go Back Home
         </a>
 

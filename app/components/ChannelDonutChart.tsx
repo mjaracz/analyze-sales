@@ -1,7 +1,21 @@
 import type { FC } from 'react';
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer, Legend } from 'recharts';
+import {
+  PieChart,
+  Pie,
+  Cell,
+  Tooltip,
+  ResponsiveContainer,
+  Legend,
+} from 'recharts';
 
-const COLORS = ['#38bdf8', '#818cf8', '#10b981', '#facc15', '#f472b6', '#f87171'];
+const COLORS = [
+  '#38bdf8',
+  '#818cf8',
+  '#10b981',
+  '#facc15',
+  '#f472b6',
+  '#f87171',
+];
 
 interface ChannelDonutChartProps {
   data: { name: string; sum: number }[];
@@ -14,7 +28,16 @@ const ChannelDonutChart: FC<ChannelDonutChartProps> = ({ data }) => {
 
       <ResponsiveContainer width="100%" height={300}>
         <PieChart>
-          <Pie data={data} dataKey="sum" nameKey="name" cx="50%" cy="50%" outerRadius={110} innerRadius={70} paddingAngle={2}>
+          <Pie
+            data={data}
+            dataKey="sum"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            outerRadius={110}
+            innerRadius={70}
+            paddingAngle={2}
+          >
             {data.map((_, index) => (
               <Cell key={index} fill={COLORS[index % COLORS.length]} />
             ))}

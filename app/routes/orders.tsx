@@ -1,4 +1,3 @@
-import { useSalesData } from '../hooks/useSalesData';
 import SpinnerLoader from '../components/SpinnerLoader';
 import type { SalesData } from '~/types';
 import { delay } from '~/utils/delay';
@@ -21,7 +20,9 @@ export default function OrdersPage() {
 
   return (
     <div className="gradient_bg min-h-screen p-6 text-white space-y-8">
-      <h1 className="text-3xl font-semibold gradient_text_accent">Orders Overview</h1>
+      <h1 className="text-3xl font-semibold gradient_text_accent">
+        Orders Overview
+      </h1>
 
       <div className="card p-4">
         <ul className="space-y-3">
@@ -34,7 +35,8 @@ export default function OrdersPage() {
               >
                 <p className="font-medium">{row.date}</p>
                 <p className="text-sm text-slate-300">
-                  {row.channel_name || '—'} • {row.sum_sales} PLN • {row.count_orders} orders
+                  {row.channel_name || '—'} • {row.sum_sales} PLN •{' '}
+                  {row.count_orders} orders
                 </p>
               </Link>
             </li>

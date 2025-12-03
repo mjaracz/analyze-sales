@@ -32,7 +32,14 @@ export default function Dashboard() {
   const navigation = useNavigation();
   const isPending = navigation.state === 'loading';
 
-  const { isPending: hookPending, totalRevenue, totalOrders, byDate, byChannel, latestRows } = useSalesData(salesData, isPending);
+  const {
+    isPending: hookPending,
+    totalRevenue,
+    totalOrders,
+    byDate,
+    byChannel,
+    latestRows,
+  } = useSalesData(salesData, isPending);
 
   if (hookPending) {
     return <Spinner />;
@@ -41,12 +48,19 @@ export default function Dashboard() {
   return (
     <div className="gradient_bg min-h-screen p-6 text-white space-y-8">
       <header className="mb-6">
-        <h1 className="text-4xl font-bold gradient_text_accent">Sales Dashboard</h1>
-        <p className="text-sm text-slate-300 mt-2">Overview of the loaded sales dataset (simulated static loader)</p>
+        <h1 className="text-4xl font-bold gradient_text_accent">
+          Sales Dashboard
+        </h1>
+        <p className="text-sm text-slate-300 mt-2">
+          Overview of the loaded sales dataset (simulated static loader)
+        </p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <SummaryCard title="Total Revenue" value={`${totalRevenue.toFixed(2)} PLN`} />
+        <SummaryCard
+          title="Total Revenue"
+          value={`${totalRevenue.toFixed(2)} PLN`}
+        />
         <SummaryCard title="Total Orders" value={totalOrders} />
         <SummaryCard title="Unique Channels" value={byChannel.length} />
       </div>

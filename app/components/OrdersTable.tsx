@@ -20,7 +20,10 @@ const OrdersTable: FC<OrdersTableProps> = ({ rows }) => {
 
         <tbody>
           {rows.map((r, i) => (
-            <tr key={i} className="border-b border-white/5 hover:bg-white/10 transition-colors">
+            <tr
+              key={i}
+              className="border-b border-white/5 hover:bg-white/10 transition-colors"
+            >
               <td className="p-3">{r.date}</td>
               <td className="p-3">{r.channel_name}</td>
               <td className="p-3">{r.sum_sales} PLN</td>

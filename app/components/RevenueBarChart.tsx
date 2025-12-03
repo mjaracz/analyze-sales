@@ -1,5 +1,12 @@
 import type { FC } from 'react';
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, CartesianGrid } from 'recharts';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  CartesianGrid,
+} from 'recharts';
 
 interface RevenueBarChartProps {
   data: { date: string; sum: number }[];
@@ -12,7 +19,10 @@ const RevenueBarChart: FC<RevenueBarChartProps> = ({ data }) => {
 
       <ResponsiveContainer width="100%" height={250}>
         <BarChart data={data}>
-          <CartesianGrid stroke="rgba(255,255,255,0.05)" strokeDasharray="4 4" />
+          <CartesianGrid
+            stroke="rgba(255,255,255,0.05)"
+            strokeDasharray="4 4"
+          />
           <XAxis dataKey="date" stroke="#94a3b8" />
           <YAxis stroke="#94a3b8" />
           <Bar dataKey="sum" fill="url(#gradientBar)" radius={[6, 6, 0, 0]} />
