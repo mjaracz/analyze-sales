@@ -276,6 +276,22 @@ npm run start
 - Installation and execution require no code modifications.
 - The README provides clear instructions for the reviewer.
 
+## 📄 License
+
+This project is shared publicly as part of the author’s technical portfolio and recruitment work.
+
+You are welcome to:
+
+- explore the code,
+- review architectural decisions,
+- learn about best practices,
+- fork it for educational purpose.
+
+## 🔒 Commercial use is strictly prohibited
+
+The source code, design, and project structure may not be used commercially, integrated into production systems, or reused in any business context without explicit written permission from the author. </br>
+This clarification aims to keep the project available for learning and evaluation while protecting it from unauthorized commercial exploitation. </br>
+
 ---
 
 Built with ❤️ using React Router.
