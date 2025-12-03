@@ -21,7 +21,13 @@ export default function OrderDetails() {
   const numericId = Number(id);
   const location = useLocation();
 
-  if (isPending) return <SpinnerLoader />;
+  if (isPending) {
+    return (
+      <div className="gradient_bg min-h-screen p-6 text-white space-y-8">
+        <SpinnerLoader />
+      </div>
+    );
+  }
 
   const stateRow = (location && location.state) || undefined;
 

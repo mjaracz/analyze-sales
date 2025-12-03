@@ -16,7 +16,13 @@ export default function OrdersPage() {
   const navigation = useNavigation();
   const isPending = navigation.state === 'loading';
 
-  if (isPending) return <SpinnerLoader />;
+  if (isPending) {
+    return (
+      <div className="gradient_bg min-h-screen p-6 text-white space-y-8">
+        <SpinnerLoader />
+      </div>
+    );
+  }
 
   return (
     <div className="gradient_bg min-h-screen p-6 text-white space-y-8">

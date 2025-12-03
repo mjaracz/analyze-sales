@@ -4,7 +4,7 @@ import salesRaw from '../data/sales.json?raw';
 import { useLoaderData, useNavigation } from 'react-router';
 
 import { useSalesData } from '../hooks/useSalesData';
-import Spinner from '../components/SpinnerLoader';
+import SpinnerLoader from '../components/SpinnerLoader';
 import SummaryCard from '../components/SummaryCard';
 import RevenueLineChart from '../components/RevenueLineChart';
 import RevenueBarChart from '../components/RevenueBarChart';
@@ -36,7 +36,11 @@ export default function Dashboard() {
     useSalesData(salesData);
 
   if (isPending) {
-    return <Spinner />;
+    return (
+      <div className="gradient_bg min-h-screen p-6 text-white space-y-8">
+        <SpinnerLoader />;
+      </div>
+    );
   }
 
   return (
