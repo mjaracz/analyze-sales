@@ -1,6 +1,6 @@
 import type { SalesData } from '../types';
 
-export function useSalesData(rows: SalesData, isPending: boolean) {
+export function useSalesData(rows: SalesData, isPending?: boolean) {
   if (isPending) {
     return {
       isPending: true,

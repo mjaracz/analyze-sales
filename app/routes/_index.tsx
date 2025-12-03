@@ -32,16 +32,10 @@ export default function Dashboard() {
   const navigation = useNavigation();
   const isPending = navigation.state === 'loading';
 
-  const {
-    isPending: hookPending,
-    totalRevenue,
-    totalOrders,
-    byDate,
-    byChannel,
-    latestRows,
-  } = useSalesData(salesData, isPending);
+  const { totalRevenue, totalOrders, byDate, byChannel, latestRows } =
+    useSalesData(salesData);
 
-  if (hookPending) {
+  if (isPending) {
     return <Spinner />;
   }
 
