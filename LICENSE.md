@@ -1,47 +1,22 @@
-## MIT License
+## Creative Commons Attribution-NonCommercial 4.0 International
+===========================================================
 
-## Copyright (c) 2025 Michał Jaracz
+This project and all associated source code are licensed under the  
+Creative Commons Attribution-NonCommercial 4.0 International License.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy </br>
-of this software and associated documentation files (the “Software”), to deal </br>
-in the Software without restriction, including without limitation the rights </br>
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell </br>
-copies of the Software, and to permit persons to whom the Software is </br>
-furnished to do so, subject to the following conditions: </br> </br>
+You are free to:
 
-The above copyright notice and this permission notice shall </br>
-be included in all copies or substantial portions of the Software. </br> </br>
+ - Share — copy and redistribute the material in any medium or format
+ - Adapt — remix, transform, and build upon the material
 
-THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND,  
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES  
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND  
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT  
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,  
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING  
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR  
-OTHER DEALINGS IN THE SOFTWARE.
+Under the following terms:
 
-## ──────────────────────────────────────────────
+ - Attribution — You must give appropriate credit, provide a link to the license,
+   and indicate if changes were made.
+ - NonCommercial — You may not use the material for commercial purposes.
 
-## INTENDED USE NOTICE (Non-binding Clarification)
+No additional restrictions — You may not apply legal terms or technological measures
+that legally restrict others from doing anything the license permits.
 
-## ──────────────────────────────────────────────
-
-This project was originally created as part of a recruitment  
-assignment and is shared publicly as a portfolio example.  
-It is intended to demonstrate software engineering skills,  
-technical decision-making, and coding style.
-
-You are welcome to:
-
-- explore the code,
-- learn from it,
-- use it as a reference,
-- fork it,
-- and build upon it in accordance with the MIT License.
-
-<h4> 
-No commercial expectations or obligations exist between the author </br>  
-and any reviewer, employer, or third party. </br>
-This note is informational only and does not alter the MIT License terms. </br>
-</h4>
+<h5> Full license text: </br>
+https://creativecommons.org/licenses/by-nc/4.0/legalcode</h5>

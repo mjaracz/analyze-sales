@@ -278,14 +278,22 @@ npm run start
 
 ## 📄 License
 
-This project is shared publicly as part of the author’s technical portfolio and recruitment work.
+This project is released under the **Creative Commons BY-NC 4.0 License**.
 
-You are welcome to:
+You may:
 
-- explore the code,
-- review architectural decisions,
-- learn about best practices,
-- fork it for educational purpose.
+- view the code,
+- learn from the implementation,
+- clone or fork the repository for educational purposes,
+- reference architectural ideas in your own learning.
+
+You may **not**:
+
+- use this code commercially,
+- integrate it into business software,
+- reuse significant parts in production projects.
+
+This project is intended for educational, portfolio, and recruitment review purposes only.
 
 ## 🔒 Commercial use is strictly prohibited
 
